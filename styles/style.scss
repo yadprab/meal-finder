@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@300;400;500;700&display=swap');
+@import './reusable/uti';
+
+:root {
+    --nonVeg: hsl(356, 69%, 56%);
+    --veg: hsl(143, 100%, 32%);
+    --Red: hsl(0, 78%, 62%);
+    --Cyan: hsl(180, 62%, 55%);
+    --Orange: hsl(34, 97%, 64%);
+    --Blue: hsl(212, 86%, 64%);
+    --Very-dark-desaturated-blue: hsl(238, 29%, 16%);
+    --Soft-red: hsl(14, 88%, 65%);
+    --Soft-violet: hsl(273, 75%, 66%);
+    --Soft-blue: hsl(240, 73%, 65%);
+    --Very-dark-grayish-blue: hsl(237, 12%, 33%);
+    --Dark-grayish-blue: hsl(240, 6%, 50%);
+    --Light-grayish-blue: hsl(240, 5%, 91%);
+    //web-safe-grey
+    --grey-1: #999999;
+    --grey-2: #666666;
+    --grey-3: #333333;
+    --grey-4: #f3f1fe;
+    --grey-5: #d1d1d1;
+
+    //white
+    --white-1: #fafafa;
+    --white-2: #f8f9fb;
+
+    //dark
+    --dark-1: #212121;
+    --dark-2: #111111;
+
+    //font
+    --font: 'Roboto', sans-serif;
+    --font-1: 'Roboto Condensed', sans-serif;
+
+
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::after,
+*::before {
+
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+body {
+    line-height: 1.5;
+    font-family: var(--font);
+}
+
+header {
+    max-width: 480px;
+
+    position: relative;
+
+
+    nav {
+        @include flex-1;
+
+        background: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 0%, 98%));
+
+        .logo {
+
+            width: 250px;
+            height: 250px;
+
+
+
+
+
+        }
+
+        ul {
+            display: none;
+        }
+    }
+
+    .input {
+        position: absolute;
+        top: 200px;
+
+        background: linear-gradient(135deg, hsl(212, 86%, 64%), hsl(180, 62%, 55%));
+        width: 100%;
+        max-width: 480px;
+        @include flex-1;
+
+        height: 50px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+
+      
+
+        .search--bar {
+            width: 100%;
+            position: relative;
+            padding: 0.5em;
+            max-width: 380px;
+
+
+            input {
+                width: 100%;
+                height: 30px;
+                appearance: none;
+                border: none;
+                font-family: var(--font);
+                color: var(--dark-2);
+                font-weight: 500;
+                padding: 0.5em;
+                letter-spacing: 1px;
+
+
+            }
+
+            button {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                @include svg-button;
+                background-color: unset;
+                cursor: pointer;
+
+                svg {
+                    pointer-events: none;
+                }
+
+            }
+        }
+
+        .shuffle {
+            @include svg-button;
+            cursor: pointer;
+            padding: 0.5em;
+            margin-right: 0.3em;
+            background-color: var(--grey-4);
+            border-radius: 5px;
+            height: 30px;
+            @include flex-1;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                pointer-events: none;
+            }
+        }
+    }
+}
+.toggle{
+    width: 40px;
+    height: 20px;
+    background-color: var(--grey-4);
+    margin-right: 0.3em;
+    position: relative;
+    border-radius: 20px;
+    cursor: pointer;
+
+    #toggle--button{
+        display: inline-block;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        appearance: none;
+        border: none;
+        background-color: var(--dark-1);
+        cursor: pointer;
+        transition: transform 0.5s ease-in;
+    }
+
+}
+main {
+    max-width: 480px;
+    background-color: var(--grey-4);
+    min-height: 100vh;
+}
+
+.container {
+    @include flex-2;
+    margin-top: 2em;
+
+    #not--found {
+        margin-top: 2em;
+
+        text-transform: uppercase;
+        font-family: var(--font-1);
+        font-weight: 700;
+        color: var(--dark-1);
+    }
+
+    .result {
+
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 150px);
+        grid-auto-rows: 150px;
+        gap: 1rem;
+        place-content: center;
+        list-style: none;
+
+        li {
+
+         
+            border-radius: 5px;
+
+
+
+
+
+            img {
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+                border-radius: 5px;
+                pointer-events: none;
+            }
+        }
+    }
+
+    .dish--selected {
+        padding: 1em;
+        @include flex-2;
+
+        .img--section {
+            width: 200px;
+            height: 200px;
+        }
+
+        article {
+            margin-top: 1em;
+            max-width: 480px;
+
+            p {
+                font-size: 0.9rem;
+                text-transform: capitalize;
+                font-family: var(--font);
+                font-weight: 400;
+                color: var(--dark-1);
+            }
+
+            .dish--name {
+                text-transform: uppercase;
+                font-size: 1rem;
+                font-family: var(--font-1);
+                letter-spacing: 1px;
+                color: var(--dark-1);
+
+                #name {
+                    display: inline-block;
+                    color: var(--Very-dark-desaturated-blue);
+                    font-weight: 500;
+                    font-family: inherit;
+                    font-size: 1.3rem;
+                }
+            }
+
+
+
+            #cuisine {
+                text-transform: uppercase;
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+                color: var(--Blue);
+                font-weight: 700;
+            }
+
+
+        }
+
+        ul {
+            margin-top: 0.5em;
+
+            li {
+                font-family: var(--font);
+                font-weight: 500;
+                text-transform: capitalize;
+
+                span {
+                    margin-left: 0.2em;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+}
+
+#type {
+    font-family: var(--font);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 1em;
+    color: var(--veg);
+}
+
+.dish {
+    position: relative;
+    overflow: hidden;
+
+    .overlay {
+        position: absolute;
+        background-color: var(--dark-2);
+        opacity: 0.5;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        // height: 20px;
+        pointer-events: none;
+        @include flex-1;
+        justify-content: space-around;
+        overflow: hidden;
+   
+
+        h2 {
+
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            text-align: center;
+            color: var(--grey-5);
+            font-family: var(--font-1);
+            letter-spacing: 1px;
+        }
+
+        .type {
+            width: 10px;
+            height: 10px;
+            background-color: var(--Blue);
+            border-radius: 50px;
+            display: none;
+        }
+    }
+}
+
+.trans{
+    transform: translateX(100%);
+}
+
+
+.non--veg {
+    article {
+        #type {
+            color: var(--nonVeg);
+        }
+    }
+}
+
+.veg {
+    article {
+        #type {
+            color: var(--veg);
+        }
+    }
+
+}
+
+
+@media screen and(min-width:481px){
+    header{
+        max-width: 768px;
+
+        .input{
+            max-width: 768px;
+        }
+    }
+    main{
+        max-width: 768px;
+    }
+    
+}
+@media screen and(min-width:769px){
+    header{
+        max-width: 900px;
+
+        .input{
+            max-width: 900px;
+        }
+    }
+    main{
+        max-width: 900px;
+    }
+   
+    
+}
+@media screen and(min-width:901px){
+    header{
+        max-width: 1100px;
+
+        .input{
+            max-width: 1100px;
+        }
+    }
+    main{
+        max-width: 1100px;
+    }
+    
+}
+@media screen and(min-width:1101px){
+    header{
+        max-width: 1440px;
+
+        .input{
+            max-width: 1440px;
+        }
+    }
+    main{
+        max-width: 1440px;
+    }
+    
+}
